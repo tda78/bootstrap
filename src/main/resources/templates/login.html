@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title>login page</title>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-3 col-xs-5">
+            <form method="post" class="md-5" th:action="@{/login}">
+                <label class="caption">Please sign in</label>
+
+                <div class="form-group has-feedback">
+                    <input type="email" name="username" class="form-control" placeholder="Email address"/>
+                    <div class="input-group">
+
+                       <!-- <input type="password" name="password" class="form-control" />-->
+                       <!-- <span class="input-group-addon"><i class="icon-ban-circle"></i> </span>-->
+
+                        <!--<div class="dropdown">-->
+                            <input class="form-control dropdown-toggle"name="password" type="password" placeholder="Password"
+                                    id="about-us" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                            <div class="dropdown-menu" aria-labelledby="about-us">
+                                <input class="dropdown-item inline" type="checkbox" name="remember-me" id="remember-me">remember me</input>
+                            </div>
+                        <!--</div>-->
+
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-primary btn-block" value="Sign in"/>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Дополнительные стили (не обязательно) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Подключаем jQuery (необходим для Bootstrap JavaScript) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

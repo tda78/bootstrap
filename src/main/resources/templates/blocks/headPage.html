@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="headerPage">
+    <div class="container-fluid">
+
+        <div class="row py-my-3" style="color: #ffffff; background-color: #31373e ">
+            <div class="col-sm-6 ">
+                <div class="container py-my-3">
+                    <br>
+                     <strong th:text="${auth.username}">
+                    </strong> with roles <span
+                        th:text="${#strings.listJoin(auth.roles, ', ')}"></span>
+
+                </div>
+            </div>
+
+            <div class="col-sm-auto text-right py-my-4">
+                <div class="container-fluid py-my-3">
+                    <a class="btn btn-link" th:href="@{/logout}"> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<br>
+<div class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li><a href="#home" role="tab" data-toggle="pill"> Home </a></li>
+        <li><a href="#profile" role="tab" data-toggle="pill"> Profile </a></li>
+        <li><a href="#message" role="tab" data-toggle="pill"> massage </a></li>
+        <li><a href="#settings" role="tab" data-toggle="pill"> Settings </a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="home">At home</div>
+        <div role="tabpanel" class="tab-pane" id="profile">At profile</div>
+        <div role="tabpanel" class="tab-pane" id="message">This is a message</div>
+        <div role="tabpanel" class="tab-pane" id="settings">The settings</div>
+    </div>
+</div>
+
+<!--<table class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>phone number</th>
+        <th>email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Vasiliy</td>
+        <td>43545344354</td>
+        <td>Vasiliy@mail.ru</td>
+    </tr>
+    <tr>
+        <td>Mischa</td>
+        <td>4453544354</td>
+        <td>Miha@mail.ru</td>
+    </tr>
+    <tr>
+        <td>Pyotr</td>
+        <td>5345345345</td>
+        <td>petya@mail.ru</td>
+    </tr>
+    </tbody>
+</table>
+<form role="form">
+    <div class = "form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Input email">
+    </div>
+</form>
+
+<button class="btn btn-info" data-toggle="modal" data-target="#myModal">modal window</button>
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Caption</h4>
+            </div>
+            <div class="modal-body">Some textt</div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse" id="hide">
+    Hidden text
+</div>-->
+<!--test
+<h1>test</h1>
+<div class="container-fluid">
+    <h1>
+        Hello, you are on my page
+        <p>3 различных блока</p>
+    </h1>
+    <div class="row">
+        <div class="col-lg-5" style="background-color: #00ccff">first</div>
+        <div class="col-lg-7" style="background-color: #cc00ff">
+            <div class="row">
+                <div class="col-lg-5" style="background-color: #00ccff">
+                    <div class="row">
+                        <div class="col-lg-5" style="background-color: #00ccff">first</div>
+                        <div class="col-lg-7" style="background-color: #cc00ff">second</div>
+                    </div>
+                </div>
+                <div class="col-lg-7" style="background-color: #cc00ff">second</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="background-color: #ff9999">left</div>
+        <div class="col-md-4" style="background-color: #99ccff">middle</div>
+        <div class="col-md" style="background-color: #ff9900">right</div>
+    </div>
+
+</div>
+<div class="container-fluid">hello-hello</div>-->
+<!-- Bootstrap CSS -->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    &lt;!&ndash; Дополнительные стили (не обязательно) &ndash;&gt;
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    &lt;!&ndash; Подключаем jQuery (необходим для Bootstrap JavaScript) &ndash;&gt;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    &lt;!&ndash; Bootstrap JavaScript &ndash;&gt;
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>-->
+<!--<script>
+    $('#myModal').modal("toggle");
+    $('#myModal').on('hide.bs.modal', function (event) {
+        alert("Well Done");
+    })
+</script>-->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

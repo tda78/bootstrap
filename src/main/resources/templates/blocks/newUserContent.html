@@ -1,0 +1,48 @@
+
+
+<div th:fragment="newUserContent">
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <form th:action="@{/admin/newUser}" method="post">
+                    <div class="form-group align-center text-center">
+                        <label for="newUserName" class="text-center">e-mail</label>
+                        <input type="email" name="name" id="newUserName" class="form-control form-control-sm">
+                    </div>
+
+                    <input type="hidden" title="name" name="userID">
+                    <div class="form-group">
+                        <label for="newUserPassword" class="text-center">password</label>
+                        <input type="password" title="password" name="password" class="form-control form-control-sm"
+                               id="newUserPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserFirstName" class="text-center">first name</label>
+                        <input type="text" name="firstName" id="newUserFirstName" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserLastName" class="text-center">last name</label>
+                        <input type="text" name="lastName" id="newUserLastName" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserAge" class="text-center">age</label>
+                        <input type="number" name="age" id="newUserAge" class="form-control form-control-sm">
+                    </div>
+                     <div class="form-group">
+                        <label for="newUserRole" class="text-center">roles:</label>
+                        <select name="newUserRoles" class="form-control selectpicker form-control-sm" multiple id="newUserRole">
+                            <option name="userRole" value="userRole" selected>User</option>
+                            <option name="adminRole" value="adminRole">Admin</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn-success form-control" value="Add new user">
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

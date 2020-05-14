@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="adminContent">
+    <table class="table table-condensed table-sm my-n1">
+
+        <caption>
+            <th>id</th>
+            <th>first name</th>
+            <th>last name</th>
+            <th>age</th>
+            <th>email</th>
+            <th>password</th>
+            <th>roles</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </caption>
+        <tbody>
+        <div th:each="user:${users}">
+            <tr>
+                <td th:text="${user.user_id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${#strings.listJoin(user.roles,', ')}"></td>
+                <td>
+
+                    <input type="button" data-target="4" class="btn btn-primary btn-mini py-1 my-1" data-toggle="modal"
+                           th:attr="data-target='#edit'+${user.user_id}" value="edit">
+                    <!-- Модальное окно -->
+                    <div th:insert="~{blocks/modalEditContent :: modalEditContent}"></div>
+
+
+                <td>
+                    <input type="button" data-target="4" class="btn btn-danger btn-mini py-1 my-1" data-toggle="modal"
+                           th:attr="data-target='#del'+${user.user_id}" value="delete">
+                    <!-- Модальное окно -->
+                    <div th:insert="~{blocks/modalDeleteContent :: modalDeleteContent}"></div>
+                </td>
+
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Дополнительные стили (не обязательно) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Подключаем jQuery (необходим для Bootstrap JavaScript) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</body>
+</html>
