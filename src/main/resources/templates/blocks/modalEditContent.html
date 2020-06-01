@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <div th:fragment="modalEditContent">
 
-    <div class="modal fade text-center" th:id="'edit'+${user.user_id}" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade text-center" id="editModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" name="qweqewqewqewqwe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
@@ -13,62 +13,61 @@
                     <h3>Edit user</h3>
                 </div>
                 <div class="modal-body text-center">
-                    <form th:action="@{/admin/update}" method="post" th:id="'editForm'+${user.user_id}">
+
 
                         <div class="form-group text-center">
-                            <label for="newUserName" class="text-center">e-mail</label>
-                            <input type="email" name="edit_name" th:value="${user.username}" id="newUserName"
+                            <label for="editUserName" class="text-center">e-mail</label>
+                            <input type="email" name="edit_name" id="editUserName"
                                    class="form-control form-control-sm">
                         </div>
 
-                        <input type="hidden" title="name" name="edit_userID" th:value="${user.user_id}">
+                        <input type="hidden" title="name" name="edit_userID" >
 
                         <div class="form-group">
-                            <label for="newUserPassword" class="text-center">password</label>
+                            <label for="editUserPassword" class="text-center">password</label>
                             <input type="password" title="password" name="edit_password"
-                                   th:value="${user.password}" class="form-control form-control-sm"
-                                   id="newUserPassword">
+                                   class="form-control form-control-sm"
+                                   id="editUserPassword">
                         </div>
 
                         <div class="form-group">
-                            <label for="newUserFirstName">first name</label>
+                            <label for="editUserFirstName">first name</label>
                             <input type="text" title="first name" name="edit_firstName"
-                                   th:value="${user.firstName}"
-                                   id="newUserFirstName" class="form-control form-control-sm">
+                                   id="editUserFirstName" class="form-control form-control-sm">
                         </div>
 
                         <div class="form-group">
-                            <label for="newUserLastName" class="text-center">last name</label>
-                            <input type="text" name="edit_lastName" th:value="${user.lastName}"
-                                   id="newUserLastName" class="form-control form-control-sm">
+                            <label for="editUserLastName" class="text-center">last name</label>
+                            <input type="text" name="edit_lastName"
+                                   id="editUserLastName" class="form-control form-control-sm">
                         </div>
 
                         <div class="form-group">
-                            <label for="newUserAge" class="text-center">age</label>
-                            <input type="number" name="edit_age" th:value="${user.age}" id="newUserAge"
+                            <label for="editUserAge" class="text-center">age</label>
+                            <input type="number" name="edit_age"  id="editUserAge"
                                    class="form-control form-control-sm">
                         </div>
 
                         <div class="form-group">
-                            <label for="newUserRole" class="text-center">roles:</label>
+                            <label for="editUserRoles" class="text-center">roles:</label>
                             <select name="edit_newUserRoles"
                                     class="form-control selectpicker form-control-sm" multiple
-                                    id="newUserRole">
-                                <option name="userRole" value="userRole"
-                                        th:selected="${user.getRoleNames().contains('USER')}">User
+                                    id="editUserRoles">
+                                <option name="userRole" id="editUserRole" value="userRole"
+                                        >User
                                 </option>
-                                <option name="adminRole" value="adminRole"
-                                        th:selected="${user.getRoleNames().contains('ADMIN')}">Admin
+                                <option name="adminRole" id="editAdminRole" value="adminRole"
+                                        >Admin
                                 </option>
                             </select>
                         </div>
 
-                    </form>
+
 
                 </div>
                 <div class="modal-footer align-left">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" th:form="'editForm'+${user.user_id}" class="btn btn-primary">Save changes</button>
+                    <button class="btn btn-primary" id="saveChanges">Save changes</button>
                 </div>
             </div>
         </div>

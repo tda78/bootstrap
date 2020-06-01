@@ -49,10 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                   /*.logoutUrl("/logout")*/
                   .permitAll()
-/*
-        .and()
-        .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(2000)
-*/
+
+  //      .and()
+   //     .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(200000)
+
         ;
     }
 

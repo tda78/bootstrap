@@ -1,22 +1,14 @@
 package com.example.crud_boot.comtroller;
 
 import com.example.crud_boot.model.User;
-import com.example.crud_boot.model.UserRole;
 import com.example.crud_boot.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -26,18 +18,12 @@ public class AdminController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String listUsers(Model model) {
-        List<User> users = new ArrayList();
-        userService.getAllUsers().forEach(users::add);
-        model.addAttribute("users", users);
+    public String listUsers(Model model) throws JsonProcessingException {
 
-        String string = (SecurityContextHolder.getContext().getAuthentication().
-                getPrincipal().toString());
-        User auth = (User) userService.loadUserByUsername(string);
-        model.addAttribute("auth", auth);
-        return "users";
+        return "admin";
     }
 
+/*
     @PostMapping("/update")
     public String updateUser(HttpServletRequest request, Model model) throws SQLException {
         String name = request.getParameter("edit_name");
@@ -61,6 +47,7 @@ public class AdminController {
         }
 
 
+
         user.setUser_id(Long.parseLong(id));
         userService.updateUser(user);
         String string = (SecurityContextHolder.getContext().getAuthentication().
@@ -72,7 +59,8 @@ public class AdminController {
         model.addAttribute("users", users);
         return "redirect:/admin/";
     }
-
+*/
+/*
     @PostMapping("/newUser")
     public String createNewUser(HttpServletRequest request, Model model) throws SQLException {
 
@@ -106,8 +94,9 @@ public class AdminController {
         model.addAttribute("users", users);
         return "redirect:/admin/";
     }
+*/
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+ /*   @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteUser(HttpServletRequest request, Model model) throws SQLException {
         userService.deleteUser(request.getParameter("del_userID"));
         List<User> users = userService.getAllUsers();
@@ -118,5 +107,5 @@ public class AdminController {
         model.addAttribute("auth", auth);
         return "redirect:/admin/";
     }
-
+*/
 }

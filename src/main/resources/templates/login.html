@@ -14,28 +14,27 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col"></div>
-        <div class="col-3 col-xs-5">
+        <div class="col-3 col-xs-6">
             <form method="post" class="md-5" th:action="@{/login}">
                 <label class="caption">Please sign in</label>
 
-                <div class="form-group has-feedback">
+               <!-- <div class="form-group">-->
                     <input type="email" name="username" class="form-control" placeholder="Email address"/>
-                    <div class="input-group">
 
-                       <!-- <input type="password" name="password" class="form-control" />-->
-                       <!-- <span class="input-group-addon"><i class="icon-ban-circle"></i> </span>-->
 
-                        <!--<div class="dropdown">-->
-                            <input class="form-control dropdown-toggle"name="password" type="password" placeholder="Password"
-                                    id="about-us" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                            <div class="dropdown-menu" aria-labelledby="about-us">
-                                <input class="dropdown-item inline" type="checkbox" name="remember-me" id="remember-me">remember me</input>
-                            </div>
-                        <!--</div>-->
+                    <!-- <input type="password" name="password" class="form-control" />-->
+                    <!-- <span class="input-group-addon"><i class="icon-ban-circle"></i> </span>-->
 
+                    <div class="dropdown ">
+                        <input class="form-control dropdown-toggle" name="password" type="password" placeholder="Password"
+                               id="passwordCheckBox" data-toggle="dropdown" aria-haspopup="true" aria-expanded="fale">
+                        <div class="dropdown-menu">
+
+                            <label class="d-inline">remember me<input class="dropdown-item item-aligne-left " type="checkbox" name="remember-me" id="remember-me"></label>
+
+                        </div>
                     </div>
-                </div>
+                <!--</div>-->
                 <div>
                     <input type="submit" class="btn btn-primary btn-block" value="Sign in"/>
                 </div>
