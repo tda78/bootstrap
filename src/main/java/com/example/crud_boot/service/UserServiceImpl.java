@@ -10,10 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import sun.reflect.generics.scope.Scope;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,8 +79,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void deleteUser(String id) throws SQLException {
-        userDao.deleteById(Long.parseLong(id));
+    public void deleteUser(long id) throws SQLException {
+        userDao.deleteById(id);
     }
 
     @Override

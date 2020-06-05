@@ -1,6 +1,7 @@
 package com.example.crud_boot.comtroller;
 
 import com.example.crud_boot.model.User;
+import com.example.crud_boot.model.UserRole;
 import com.example.crud_boot.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class RestControllerAdmin {
@@ -36,46 +39,38 @@ public class RestControllerAdmin {
     }
 
     @PostMapping("/admin/update")
-    public String updateUser(@RequestBody String request) throws SQLException {
+    public ResponseEntity<?> updateUser(@RequestBody User user) throws SQLException {
+        Set<UserRole> userRoles= new HashSet<>();
+        for(Object roleString: user.getRoles()){
+            userRoles.add(userService.getRoleByName(roleString.toString()));
+        }
+        user.setRoles(userRoles);
+        userService.updateUser(user);
 
-        return ("OK");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping(value = "/admin/newUser")
     public ResponseEntity<?> createNewUser(@RequestBody User user) throws SQLException, JSONException, JsonProcessingException {
 
-       System.out.println("start new user");
-        System.out.println(user.getUsername());
-    /*    String newUserJsonString = request;
-        JSONObject userJson = new JSONObject(newUserJsonString);
-        User user = new User();
-        user.setFirstName(userJson.getString("firstName"));
-        user.setLastName(userJson.getString("lastName"));
-        user.setAge(userJson.getString("age"));
-        user.setUsername(userJson.getString("username"));
-        user.setPassword(userJson.getString("password"));
-        JSONArray jsonRoles = userJson.getJSONArray("roles");
-        int jsonRolesLength = jsonRoles.length();
-        String role;
-        for (int i = 0; i < jsonRolesLength; i++) {
-            role = jsonRoles.getJSONObject(i).toString();
-            user.getRoles().add(userService.getRoleByName(role));
+        Set<UserRole> userRoles= new HashSet<>();
+        for(Object roleString: user.getRoles()){
+            userRoles.add(userService.getRoleByName(roleString.toString()));
         }
+        user.setRoles(userRoles);
         userService.addUser(user);
-        User userToJson = (User)userService.loadUserByUsername(user.getUsername());
+        User newUser = (User)userService.loadUserByUsername(user.getUsername());
 
-        ObjectMapper mapper = new ObjectMapper();
-        String JsonUserString = mapper.writeValueAsString(userToJson);
-     */   return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(newUser.getUser_id(), HttpStatus.OK);
     }
 
 
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteUser(HttpServletRequest request, Model model) throws SQLException {
-        String userForDeleteID = request.getParameter("del_userID");
-        userService.deleteUser(userForDeleteID);
-        return (userForDeleteID + " deleted");
+    @PostMapping(value = "/admin/delete")
+    public ResponseEntity<?> DeleteUser(@RequestBody User user) throws SQLException {
+
+        userService.deleteUser(user.getUser_id());
+        return (new ResponseEntity<>(HttpStatus.OK));
     }
 
 }

@@ -1,27 +1,46 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<csrf disabled="true"/>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>Admin panel</title>
 </head>
 <body>
-<script src="/static/js/sc.js"></script>
-<div th:insert="~{blocks/headPage :: headerPage}"></div>
+
+
+<div id="header">
+    <div id="headerPage">
+        <div class="container-fluid">
+
+            <div class="row py-my-4" style="color: #ffffff; background-color: #31373e ">
+                <div class="col-sm-6 py-my-3">
+                    <div class="container py-my-3" id="headerString">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-auto text-right py-my-4">
+                    <div class="container-fluid py-my-3">
+                        <a class="btn btn-link" href="/logout"> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col col-md-2">
-            <ul class="nav nav-stacked nav-left nav-pills">
-                <br>
-                <li class="active"><a href="#userPanel" data-toggle="tab" role="tab" >User</a></li>
-            </ul>
+        <div class="col col-md-2" id="mainTabs">
+
+            <!--  Главное меню - переключение юзер/админ-->
         </div>
         <div class="col col-md-10">
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="userPanel">
+                <div role="tabpanel" class="tab-pane active in" id="userPanel">
                     <h2>User information page</h2>
-                    <h3>About user</h3>
-                    <div th:insert="~{blocks/userContent :: userContent}"></div>
+
                 </div>
             </div>
         </div>
@@ -45,8 +64,6 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
 
-<script>
-   getAuthority();
-</script>
+<script src = "/js/userJs.js"></script>
 </body>
 </html>

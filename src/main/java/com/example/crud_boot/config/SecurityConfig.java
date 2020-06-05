@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
                   .antMatchers( "/login/**").permitAll()
                   .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
@@ -47,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                   .and()
                   .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                  /*.logoutUrl("/logout")*/
-                  .permitAll()
+                .permitAll()
+                ;
 
   //      .and()
    //     .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(200000)

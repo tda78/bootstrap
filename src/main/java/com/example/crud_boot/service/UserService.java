@@ -15,7 +15,7 @@ public interface UserService extends UserDetailsService {
 
     void addUser(User user);
 
-    public void deleteUser(String id) throws SQLException;
+    public void deleteUser(long id) throws SQLException;
 
     public void updateUser(User user) throws SQLException;
 

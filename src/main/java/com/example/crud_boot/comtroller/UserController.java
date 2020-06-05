@@ -16,13 +16,6 @@ public class UserController {
 
     @RequestMapping("/user/")
     public String userPage(Model model) {
-
-        String string = (SecurityContextHolder.getContext().getAuthentication().
-                getPrincipal().toString());
-
-        User auth = (User) userService.loadUserByUsername(string);
-
-        model.addAttribute("auth", auth);
         return "userInfo";
     }
 }

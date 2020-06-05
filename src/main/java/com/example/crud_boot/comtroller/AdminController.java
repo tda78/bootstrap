@@ -11,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/admin")
 public class AdminController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/", method = RequestMethod.GET)
     public String listUsers(Model model) throws JsonProcessingException {
 
-        return "admin";
+        return "admin.html";
     }
 
 /*
